@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Gordon Financial&lt;/title&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">:root {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--navy:#0a192f;--navy2:#112240;--gold:#c5a059;--gold2:#e8c97e;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--emerald:#1a7a5e;--emerald2:#e6f4ef;--cream:#faf7f2;--white:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--slate:#8892a4;--text:#1a1a2e;--textl:#4a5568;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--red:#c0392b;--redl:#fdf0ef;--blue:#1e6fa8;--bluel:#e8f4fd;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--shadow:0 8px 32px rgba(10,25,47,.12);--r:16px;--tr:all .3s cubic-bezier(.4,0,.2,1);</p>
+<p class="p1">}</p>
+<p class="p1">*{box-sizing:border-box;margin:0;padding:0;}</p>
+<p class="p1">body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* HEADER */</p>
+<p class="p1">header{background:var(--navy);padding:0;position:relative;overflow:hidden;}</p>
+<p class="p1">.hdr-inner{max-width:960px;margin:0 auto;padding:48px 28px 40px;position:relative;z-index:2;}</p>
+<p class="p1">.hdr-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(197,160,89,.15);border:1px solid rgba(197,160,89,.35);color:var(--gold);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:2.5px;padding:5px 12px;border-radius:4px;margin-bottom:18px;text-transform:uppercase;}</p>
+<p class="p1">.g-mark{width:24px;height:24px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.9rem;font-weight:900;color:var(--navy);}</p>
+<p class="p1">header h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);color:var(--white);font-weight:900;line-height:1.15;margin-bottom:10px;}</p>
+<p class="p1">header h1 span{color:var(--gold);}</p>
+<p class="p1">header p{color:var(--slate);font-size:.95rem;max-width:460px;font-weight:300;}</p>
+<p class="p1">.hdr-geo{position:absolute;right:-60px;top:-60px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(197,160,89,.1);z-index:1;}</p>
+<p class="p1">.hdr-geo::after{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(197,160,89,.06);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* NAV */</p>
+<p class="p1">.snav{position:sticky;top:0;z-index:100;background:var(--navy2);border-bottom:1px solid rgba(197,160,89,.2);overflow-x:auto;scrollbar-width:none;}</p>
+<p class="p1">.snav::-webkit-scrollbar{display:none;}</p>
+<p class="p1">.ntabs{display:flex;max-width:960px;margin:0 auto;padding:0 16px;white-space:nowrap;}</p>
+<p class="p1">.ntab{color:var(--slate);font-size:.72rem;font-weight:500;padding:13px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:var(--tr);letter-spacing:.5px;text-transform:uppercase;background:none;border-top:none;border-left:none;border-right:none;}</p>
+<p class="p1">.ntab:hover,.ntab.active{color:var(--gold);border-bottom-color:var(--gold);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* LIFE STAGE BAR */</p>
+<p class="p1">.stage-bar{background:var(--navy);border-bottom:1px solid rgba(197,160,89,.15);padding:12px 0;}</p>
+<p class="p1">.stage-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}</p>
+<p class="p1">.stage-lbl{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:2px;color:var(--slate);text-transform:uppercase;flex-shrink:0;}</p>
+<p class="p1">.stage-btn{background:rgba(255,255,255,.05);border:1px solid rgba(197,160,89,.25);color:var(--slate);font-size:.75rem;padding:5px 12px;border-radius:20px;cursor:pointer;transition:var(--tr);}</p>
+<p class="p1">.stage-btn.sel{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600;}</p>
+<p class="p1">.stage-btn:hover:not(.sel){color:var(--gold);border-color:var(--gold);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CONTAINER */</p>
+<p class="p1">.wrap{max-width:960px;margin:0 auto;padding:36px 22px 80px;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CARD */</p>
+<p class="p1">.card{background:var(--white);border-radius:var(--r);padding:32px;margin-bottom:24px;box-shadow:var(--shadow);border:1px solid rgba(10,25,47,.06);animation:fadeUp .45s ease both;}</p>
+<p class="p1">@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}</p>
+<p class="p1">.card-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(10,25,47,.06);}</p>
+<p class="p1">.pnum{width:34px;height:34px;background:var(--navy);color:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.75rem;flex-shrink:0;}</p>
+<p class="p1">.card h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);font-weight:700;}</p>
+<p class="p1">.card h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);margin:20px 0 10px;font-weight:700;}</p>
+<p class="p1">.card p{color:var(--textl);margin-bottom:12px;font-size:.92rem;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* MARKET PULSE GRID */</p>
+<p class="p1">.pulse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:16px 0;}</p>
+<p class="p1">.pulse-tile{background:var(--cream);border:1px solid rgba(10,25,47,.08);border-radius:10px;padding:14px;transition:var(--tr);cursor:default;}</p>
+<p class="p1">.pulse-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow);}</p>
+<p class="p1">.pt-icon{font-size:1.2rem;margin-bottom:6px;}</p>
+<p class="p1">.pt-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--slate);font-weight:600;}</p>
+<p class="p1">.pt-val{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--navy);font-weight:700;}</p>
+<p class="p1">.pt-sub{font-size:.75rem;margin-top:3px;}</p>
+<p class="p1">.pt-up{color:var(--emerald);}</p>
+<p class="p1">.pt-dn{color:var(--red);}</p>
+<p class="p1">.pt-neu{color:var(--slate);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CALLOUTS */</p>
+<p class="p1">.callout{border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.87rem;display:flex;gap:10px;align-items:flex-start;border-radius:0;}</p>
+<p class="p1">.callout.gold{background:#fff8e7;border-left:3px solid var(--gold);color:#7a5c1e;}</p>
+<p class="p1">.callout.green{background:var(--emerald2);border-left:3px solid var(--emerald);color:#1d5c45;}</p>
+<p class="p1">.callout.blue{background:var(--bluel);border-left:3px solid var(--blue);color:#1a4f78;}</p>
+<p class="p1">.callout.red{background:var(--redl);border-left:3px solid var(--red);color:#8b2020;}</p>
+<p class="p1">.ci{font-size:1rem;flex-shrink:0;margin-top:2px;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* AI CHAT */</p>
+<p class="p1">.chat-wrap{border:1px solid rgba(10,25,47,.1);border-radius:12px;overflow:hidden;margin-top:16px;}</p>
+<p class="p1">.chat-msgs{height:320px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--cream);}</p>
+<p class="p1">.msg{max-width:82%;padding:11px 15px;border-radius:12px;font-size:.88rem;line-height:1.6;}</p>
+<p class="p1">.msg.user{background:var(--navy);color:var(--white);align-self:flex-end;border-radius:12px 12px 2px 12px;}</p>
+<p class="p1">.msg.ai{background:var(--white);color:var(--text);align-self:flex-start;border-radius:12px 12px 12px 2px;border:1px solid rgba(10,25,47,.08);}</p>
+<p class="p1">.msg.ai .ai-tag{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:1.5px;display:block;margin-bottom:5px;text-transform:uppercase;}</p>
+<p class="p1">.msg.loading{background:var(--white);color:var(--slate);align-self:flex-start;border:1px solid rgba(10,25,47,.08);border-radius:12px 12px 12px 2px;font-style:italic;}</p>
+<p class="p1">.chat-input-row{display:flex;gap:8px;padding:12px;background:var(--white);border-top:1px solid rgba(10,25,47,.08);}</p>
+<p class="p1">.chat-input{flex:1;padding:10px 14px;border-radius:8px;border:1px solid rgba(10,25,47,.15);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text);background:var(--cream);outline:none;transition:border .2s;}</p>
+<p class="p1">.chat-input:focus{border-color:var(--gold);}</p>
+<p class="p1">.chat-send{background:var(--navy);color:var(--gold);border:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:.82rem;cursor:pointer;transition:var(--tr);white-space:nowrap;}</p>
+<p class="p1">.chat-send:hover{background:var(--gold);color:var(--navy);}</p>
+<p class="p1">.chat-send:disabled{opacity:.5;cursor:not-allowed;}</p>
+<p class="p1">.quick-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}</p>
+<p class="p1">.chip{background:var(--white);border:1px solid rgba(10,25,47,.12);color:var(--textl);font-size:.75rem;padding:5px 11px;border-radius:16px;cursor:pointer;transition:var(--tr);}</p>
+<p class="p1">.chip:hover{background:var(--navy);color:var(--gold);border-color:var(--navy);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* ROADMAP */</p>
+<p class="p1">.roadmap{display:flex;flex-direction:column;gap:0;margin:16px 0;}</p>
+<p class="p1">.rm-stage{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(10,25,47,.05);}</p>
+<p class="p1">.rm-stage:last-child{border-bottom:none;}</p>
+<p class="p1">.rm-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;flex-shrink:0;color:var(--white);}</p>
+<p class="p1">.rm-body h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:4px;}</p>
+<p class="p1">.rm-body p{font-size:.83rem;color:var(--textl);margin:0;}</p>
+<p class="p1">.rm-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}</p>
+<p class="p1">.rtag{font-size:.68rem;padding:2px 8px;border-radius:10px;font-weight:600;}</p>
+<p class="p1">.rtag.g{background:var(--emerald2);color:var(--emerald);}</p>
+<p class="p1">.rtag.b{background:var(--bluel);color:var(--blue);}</p>
+<p class="p1">.rtag.a{background:#fff8e7;color:#7a5c1e;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* QUIZ */</p>
+<p class="p1">.qbox{background:var(--cream);border-radius:10px;padding:16px 18px;margin-bottom:12px;border:1px solid rgba(10,25,47,.07);}</p>
+<p class="p1">.qbox p{font-weight:600;color:var(--navy);margin-bottom:10px;font-size:.9rem;}</p>
+<p class="p1">.opt{display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;font-size:.87rem;color:var(--textl);padding:5px 8px;border-radius:6px;transition:var(--tr);}</p>
+<p class="p1">.opt:hover{background:rgba(197,160,89,.1);color:var(--navy);}</p>
+<p class="p1">input[type=radio]{accent-color:var(--gold);}</p>
+<p class="p1">.qbtn{background:var(--navy);color:var(--gold);border:2px solid var(--gold);padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.87rem;letter-spacing:.5px;cursor:pointer;width:100%;transition:var(--tr);margin-top:4px;}</p>
+<p class="p1">.qbtn:hover{background:var(--gold);color:var(--navy);}</p>
+<p class="p1">#qres{display:none;margin-top:16px;padding:18px;border-radius:10px;text-align:center;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* RESOURCE GRID */</p>
+<p class="p1">.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0;}</p>
+<p class="p1">.res-card{background:var(--cream);border:1px solid rgba(10,25,47,.08);border-radius:10px;padding:18px;transition:var(--tr);cursor:pointer;}</p>
+<p class="p1">.res-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--gold);}</p>
+<p class="p1">.res-icon{font-size:1.4rem;margin-bottom:8px;}</p>
+<p class="p1">.res-name{font-weight:600;font-size:.88rem;color:var(--navy);margin-bottom:3px;}</p>
+<p class="p1">.res-desc{font-size:.78rem;color:var(--textl);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* FOOTER */</p>
+<p class="p1">footer{background:var(--navy);color:var(--slate);text-align:center;padding:28px 20px;font-size:.77rem;border-top:1px solid rgba(197,160,89,.2);}</p>
+<p class="p1">footer span{color:var(--gold);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* STAGE CONTENT */</p>
+<p class="p1">.stage-content{display:none;}</p>
+<p class="p1">.stage-content.active{display:block;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CHART */</p>
+<p class="p1">.chart-wrap{margin:16px 0;background:var(--cream);border-radius:10px;padding:20px;border:1px solid rgba(10,25,47,.07);}</p>
+<p class="p1">.chart-title{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--navy);font-weight:700;margin-bottom:3px;}</p>
+<p class="p1">.chart-sub{font-size:.72rem;color:var(--slate);margin-bottom:14px;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* GEO ALERT */</p>
+<p class="p1">.geo-strip{background:linear-gradient(90deg,rgba(192,57,43,.08),rgba(192,57,43,.03));border:1px solid rgba(192,57,43,.2);border-radius:8px;padding:12px 16px;margin:12px 0;display:flex;gap:10px;align-items:center;font-size:.82rem;color:#8b2020;}</p>
+<p class="p2"><br></p>
+<p class="p1">/* PLAN BUILDER */</p>
+<p class="p1">.plan-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}</p>
+<p class="p1">.plan-field label{display:block;font-size:.75rem;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}</p>
+<p class="p1">.plan-field input,.plan-field select{width:100%;padding:9px 12px;border-radius:8px;border:1px solid rgba(10,25,47,.15);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text);background:var(--cream);}</p>
+<p class="p1">.plan-field input:focus,.plan-field select:focus{outline:none;border-color:var(--gold);}</p>
+<p class="p2"><br></p>
+<p class="p1">/* INS CARDS */</p>
+<p class="p1">.ins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0;}</p>
+<p class="p1">.ins-card{border-radius:10px;padding:18px;border:1px solid rgba(10,25,47,.1);position:relative;overflow:hidden;}</p>
+<p class="p1">.ins-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}</p>
+<p class="p1">.ins-term{background:var(--bluel);}.ins-term::before{background:var(--blue);}</p>
+<p class="p1">.ins-whole{background:var(--emerald2);}.ins-whole::before{background:var(--emerald);}</p>
+<p class="p1">.ins-iul{background:#fff8e7;}.ins-iul::before{background:var(--gold);}</p>
+<p class="p1">.ins-card h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--navy);margin-bottom:4px;font-weight:700;}</p>
+<p class="p1">.ins-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:10px;display:block;}</p>
+<p class="p1">.ins-term .ins-tag{color:var(--blue);}</p>
+<p class="p1">.ins-whole .ins-tag{color:var(--emerald);}</p>
+<p class="p1">.ins-iul .ins-tag{color:#7a5c1e;}</p>
+<p class="p1">.ins-card ul{list-style:none;}</p>
+<p class="p1">.ins-card ul li{font-size:.78rem;color:var(--textl);padding:4px 0;border-bottom:1px solid rgba(10,25,47,.05);display:flex;gap:6px;}</p>
+<p class="p1">.ins-card ul li::before{content:'→';color:var(--gold);flex-shrink:0;}</p>
+<p class="p2"><br></p>
+<p class="p1">@media(max-width:600px){.plan-fields{grid-template-columns:1fr;}.card{padding:20px 16px;}}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hdr-geo"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hdr-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hdr-badge"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="g-mark"&gt;G&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Gordon Financial · 2026</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Smart Money for&lt;br&gt;&lt;span&gt;Every Generation&lt;/span&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;AI-powered financial guidance for family and friends — from first paycheck to legacy planning.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;nav class="snav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="ntabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab active" onclick="gotoSection('pulse',this)"&gt;Market Pulse&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('copilot',this)"&gt;AI Co-Pilot&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('roadmap',this)"&gt;Life Roadmap&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('quiz',this)"&gt;DNA Quiz&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('insurance',this)"&gt;Insurance&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('builder',this)"&gt;Plan Builder&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="ntab" onclick="gotoSection('resources',this)"&gt;Resources&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="stage-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="stage-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="stage-lbl"&gt;Your stage:&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="stage-btn sel" onclick="setStage('student',this)"&gt;Student&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="stage-btn" onclick="setStage('young',this)"&gt;Young Professional&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="stage-btn" onclick="setStage('parent',this)"&gt;Parent&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="stage-btn" onclick="setStage('preretiree',this)"&gt;Pre-Retiree&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="stage-btn" onclick="setStage('retiree',this)"&gt;Retiree&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="wrap"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MARKET PULSE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="pulse"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;01&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Market Pulse — Live Snapshot&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Key indicators updated in real time via AI. Tap any tile to ask the co-pilot what it means for your money.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="geo-strip"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span style="font-size:1rem;flex-shrink:0;"&gt;⚠️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;&lt;strong&gt;Geopolitical Watch:&lt;/strong&gt; Elevated trade tensions (US–China tariff escalation), Middle East supply chain friction, and a stronger USD are creating volatility headwinds across emerging markets and energy. &lt;em&gt;Ask the AI Co-Pilot how this affects your portfolio.&lt;/em&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="pulse-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('What does the current S&amp;P 500 level mean for my investments?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;📈&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;S&amp;P 500&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;5,241&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-up"&gt;+0.6% today&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('How do current Fed interest rates affect my savings and investments?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;🏦&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;Fed Rate&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;4.25%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-neu"&gt;Held steady&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('How does current inflation affect my purchasing power and savings strategy?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;💵&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;Inflation (CPI)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;3.1%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-dn"&gt;Still elevated&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('Should I invest in Bitcoin right now given current conditions?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;₿&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;Bitcoin&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;$84,320&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-up"&gt;+2.1% week&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('How does the oil price environment affect my investment in energy ETFs?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;🛢️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;Oil (WTI)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;$78.40&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-dn"&gt;-1.4% week&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pulse-tile" onclick="askCopilot('Is gold a good hedge right now given geopolitical tensions?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-icon"&gt;✨&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-lbl"&gt;Gold&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-val"&gt;$3,280&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pt-sub pt-up"&gt;+4.2% month&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="chart-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-title"&gt;Asset Class Performance — 2024 vs 2025 vs 2026 Outlook&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-sub"&gt;Illustrative only. For educational reference. Not investment advice.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;canvas id="macroChart" style="max-height:260px;"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="callout gold"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="ci"&gt;💡&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span id="stage-market-tip"&gt;As a &lt;strong&gt;Student&lt;/strong&gt;: Even small amounts invested now compound powerfully. A $50/month habit started at 18 grows to $250K+ by retirement. Time is your greatest asset.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- AI CO-PILOT --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="copilot"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;02&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Gordon AI Co-Pilot&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Ask anything about money, investing, insurance, or your financial plan. The AI gives conversational, personalized answers — updated with current market awareness.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="quick-chips"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('How do I start investing with $500?')"&gt;Start with $500&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('Should I open a Roth IRA or traditional IRA?')"&gt;Roth vs Traditional IRA&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('What life insurance do I need at my age?')"&gt;Life insurance for me&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('How do current tariffs and geopolitical tensions affect my portfolio?')"&gt;Geopolitics &amp; my money&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('What is a 529 plan and should I open one for my child?')"&gt;529 Plans explained&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chip" onclick="askCopilot('How do I build a 6-month emergency fund?')"&gt;Emergency fund plan&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="chat-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chat-msgs" id="chatMsgs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="msg ai" style="max-width:92%;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="ai-tag"&gt;Gordon AI · Co-Pilot&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:10px;"&gt;&lt;strong&gt;I'm Gordon AI — your dedicated financial co-pilot.&lt;/strong&gt; I bridge the gap between complex market data and actionable personal finance. I don't just chat — I analyze your specific life stage and the current 2026 economic landscape to give you grounded, strategic guidance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:6px;font-weight:600;color:var(--navy);"&gt;🛠️ What I can do for you:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:8px;"&gt;&lt;strong&gt;1. Hyper-Personalized Strategy&lt;/strong&gt; — Whether you're a Student navigating FAFSA or a Retiree managing RMDs, I adapt. I build step-by-step roadmaps based on your income and savings, explain the "why" behind your Investor DNA results, and compare Roth vs. Traditional accounts for your tax bracket.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:8px;"&gt;&lt;strong&gt;2. Real-Time Market Analysis (2026)&lt;/strong&gt; — I monitor the Market Pulse section to tell you how macro events affect your micro-finances: Fed Rate impact on savings and mortgages, portfolio volatility during US-China trade tensions, and whether Bitcoin or Gold makes sense as a hedge for you.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:8px;"&gt;&lt;strong&gt;3. Wealth &amp; Insurance Optimization&lt;/strong&gt; — I treat insurance as a wealth-building tool, not just an expense. I help you decide between Term, Whole Life, or IUL, explain how to use cash value as a tax-free "personal bank" in retirement, and calculate coverage to protect your family's standard of living.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="margin-bottom:10px;"&gt;&lt;strong&gt;4. Education &amp; Literacy&lt;/strong&gt; — I translate Wall Street into Main Street English. Ask me to explain the 4% withdrawal rule, break down how $50/month becomes a legacy, or walk you through any resource in Section 07.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p style="background:#fff8e7;border-left:3px solid var(--gold);padding:10px 12px;font-size:.85rem;color:#7a5c1e;margin-bottom:6px;border-radius:0 6px 6px 0;"&gt;💡 &lt;strong&gt;Try this now:&lt;/strong&gt; "I'm in the Young Professional stage. Given inflation at 3.1% and S&amp;P 500 at 5,241, should I prioritize aggressive growth or build a larger cash cushion?"&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chat-input-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input class="chat-input" id="chatIn" type="text" placeholder="Ask anything about your finances..." onkeydown="if(event.key==='Enter')sendMsg()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="chat-send" id="sendBtn" onclick="sendMsg()"&gt;Ask →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- LIFE ROADMAP --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="roadmap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;03&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Life Financial Roadmap&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Key money milestones for every stage of life — tap any stage to learn more from the AI Co-Pilot.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="roadmap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rm-stage" onclick="askCopilot('Give me a detailed financial action plan for students and young people.')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-num" style="background:#1e6fa8;"&gt;01&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h4&gt;Student (14–22)&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;FAFSA, scholarships, first bank account, building credit, understanding debt. Your money habits start here.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rm-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="rtag b"&gt;FAFSA&lt;/span&gt;&lt;span class="rtag b"&gt;Scholarships&lt;/span&gt;&lt;span class="rtag g"&gt;Credit Building&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rm-stage" onclick="askCopilot('Give me a financial action plan for a young professional in their 20s and early 30s.')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-num" style="background:#1a7a5e;"&gt;02&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h4&gt;Young Professional (22–35)&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;401(k) with employer match, Roth IRA, emergency fund, first investments, student loan strategy.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rm-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="rtag g"&gt;Roth IRA&lt;/span&gt;&lt;span class="rtag g"&gt;401(k)&lt;/span&gt;&lt;span class="rtag a"&gt;Emergency Fund&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rm-stage" onclick="askCopilot('Give me a financial plan for parents — covering kids, insurance, and wealth building.')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-num" style="background:#c5a059;"&gt;03&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h4&gt;Parent (30–50)&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;529 college savings, life insurance coverage, core-satellite investing, estate basics (will + beneficiaries).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rm-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="rtag a"&gt;529 Plan&lt;/span&gt;&lt;span class="rtag a"&gt;Life Insurance&lt;/span&gt;&lt;span class="rtag g"&gt;Investing&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rm-stage" onclick="askCopilot('I am approaching retirement — what should I be doing with my money in the next 10 years?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-num" style="background:#8892a4;"&gt;04&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h4&gt;Pre-Retiree (50–65)&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Max catch-up contributions, shift to conservative allocation, Social Security strategy, healthcare planning.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rm-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="rtag b"&gt;Social Security&lt;/span&gt;&lt;span class="rtag b"&gt;Medicare&lt;/span&gt;&lt;span class="rtag a"&gt;Catch-up&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rm-stage" onclick="askCopilot('I am retired — how do I manage withdrawals, income, and leave a legacy for my family?')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-num" style="background:#0a192f;"&gt;05&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rm-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h4&gt;Retiree (65+)&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;4% withdrawal rule, RMDs, trust &amp; estate planning, final expense insurance, legacy transfer strategies.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="rm-tags"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="rtag g"&gt;RMD Strategy&lt;/span&gt;&lt;span class="rtag a"&gt;Estate Planning&lt;/span&gt;&lt;span class="rtag g"&gt;Legacy&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- INVESTOR DNA QUIZ --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="quiz"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;04&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Investor DNA Quiz&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Three questions to reveal your risk profile and get a personalized strategy recommendation.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="display:flex;gap:8px;margin-bottom:12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="text" id="qname" placeholder="Your name (e.g. Jamel, Mom, Dad)" style="flex:1;padding:10px 13px;border-radius:8px;border:1px solid rgba(10,25,47,.15);font-family:'DM Sans',sans-serif;font-size:.88rem;background:var(--cream);color:var(--text);outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(10,25,47,.15)'"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="qbox"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;1. If your $1,000 investment drops to $800, you:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q1" value="1"&gt; Sell — protect what's left&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q1" value="3"&gt; Wait and monitor&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q1" value="5"&gt; Buy more — it's on sale&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="qbox"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;2. When do you need this money?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q2" value="1"&gt; Under 2 years&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q2" value="3"&gt; 5–10 years&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q2" value="5"&gt; 15+ years&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="qbox"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;3. This money is for:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q3" value="1"&gt; Near-term needs / bills&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q3" value="3"&gt; Balanced growth&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="opt"&gt;&lt;input type="radio" name="q3" value="5"&gt; Long-term family wealth&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="qbtn" onclick="calcQuiz()"&gt;Reveal My Investor DNA →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="qres"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- INSURANCE --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="insurance"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;05&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Life Insurance — Wealth Tool&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Life insurance isn't just protection — it's one of the most tax-efficient wealth tools available to families.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="callout green"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="ci"&gt;✅&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;&lt;strong&gt;Key benefit:&lt;/strong&gt; Death benefits pass income-tax-free. Permanent policies build cash value that grows tax-deferred and can be borrowed tax-free in retirement.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="ins-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ins-card ins-term"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="ins-tag"&gt;Term Life&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4&gt;Pure Protection&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;10, 20, or 30 year coverage&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Lowest monthly premium&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;No cash value buildup&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Best for: Young families&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;$500K / 20yr ≈ $25–40/mo&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ins-card ins-whole"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="ins-tag"&gt;Whole Life&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4&gt;Lifetime + Cash Value&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Never expires&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Guaranteed cash value growth&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Fixed premiums for life&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Best for: Estate planning&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Dividends can be reinvested&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ins-card ins-iul"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="ins-tag"&gt;IUL — Indexed Universal&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h4&gt;Flexible + Market-Linked&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Permanent, flexible premiums&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;S&amp;P-linked cash value&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;0% floor — no market losses&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Cap on gains (~10–14%)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;Best for: Tax-free retirement&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="qbtn" style="margin-top:8px;" onclick="askCopilot('Which type of life insurance is right for me and my family based on my current life stage?')"&gt;Ask AI: Which Policy Is Right For Me? →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- PLAN BUILDER --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="builder"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;06&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Personalized Financial Plan Builder&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Fill in a few details and the AI will generate a customized financial plan tailored to your situation.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="plan-fields"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Your Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="pb-name" placeholder="e.g. Jamel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Age&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="number" id="pb-age" placeholder="e.g. 24" min="14" max="90"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Annual Income&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="pb-income" placeholder="e.g. $45,000"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Monthly Savings Available&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="pb-savings" placeholder="e.g. $300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Primary Goal&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;select id="pb-goal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value=""&gt;Select goal...&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Build an emergency fund&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Pay off student loans&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Start investing&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Buy a home&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Plan for retirement&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Protect my family with insurance&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Build generational wealth&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="plan-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Life Stage&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;select id="pb-stage"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option value=""&gt;Select stage...&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Student&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Young Professional&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Parent&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Pre-Retiree&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;option&gt;Retiree&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="qbtn" onclick="buildPlan()"&gt;Generate My Financial Plan →&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="plan-result" style="margin-top:16px;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- RESOURCES --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card" id="resources"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-hdr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="pnum"&gt;07&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Resources &amp; Tools&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Trusted tools to take action on your financial plan.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="res-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://studentaid.gov/h/apply-for-aid/fafsa','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;🎓&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;FAFSA.gov&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;Apply for federal financial aid and grants&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://www.policygenius.com','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;🛡️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;Policygenius&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;Compare life insurance quotes&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://www.fastweb.com','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;🔍&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;Fastweb&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;Scholarship search database&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://www.morningstar.com','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;📊&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;Morningstar&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;Research ETFs, stocks &amp; mutual funds&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://www.investor.gov/financial-tools-calculators','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;🧮&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;SEC Calculators&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;Compound interest &amp; retirement tools&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="res-card" onclick="window.open('https://www.ssa.gov/myaccount/','_blank')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-icon"&gt;🏛️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-name"&gt;SSA My Account&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="res-desc"&gt;View your Social Security earnings record&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="callout blue"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="ci"&gt;ℹ️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;All resources open in a new tab. Gordon Financial is for educational guidance only — always consult a licensed financial advisor, insurance professional, or tax expert for decisions specific to your situation.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="max-width:720px;margin:0 auto 16px;padding:14px 18px;background:rgba(197,160,89,.08);border:1px solid rgba(197,160,89,.25);border-radius:8px;font-size:.78rem;color:#c5a059;line-height:1.65;text-align:left;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;strong style="display:block;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;"&gt;⚠️ Important Disclaimer&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span style="color:#d4b878;"&gt;Gordon AI is operated by a financial advisor; however, this platform and all content provided herein are for &lt;strong&gt;entertainment and educational purposes only&lt;/strong&gt;. This material is &lt;strong&gt;not to be distributed for compensation&lt;/strong&gt;. Nothing on this site constitutes personalized financial, investment, tax, or legal advice. Always consult with a licensed &lt;strong&gt;financial advisor, tax advisor, or Certified Financial Planner (CFP®)&lt;/strong&gt; before making any financial decisions.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;&amp;copy; 2026 &lt;span&gt;Gordon Financial&lt;/span&gt; · Smart Money for Every Generation&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p style="margin-top:6px;"&gt;For educational and entertainment purposes only. Not for distribution for compensation.&lt;/p&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const STAGES = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>student:'As a Student: Even $50/month invested now compounds to $250K+ by retirement. Time is your greatest financial asset.',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>young:'As a Young Professional: Max your 401(k) match first — it\'s free money. Then open a Roth IRA. Consistency beats timing.',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>parent:'As a Parent: Protect your family with life insurance first, then build wealth. A 529 plan grows tax-free for college costs.',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>preretiree:'As a Pre-Retiree: Catch-up contributions ($7,500 extra in 401k after 50), plan your Social Security timing, and shift to a conservative allocation.',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>retiree:'As a Retiree: The 4% rule says withdraw 4% annually. Prioritize tax-efficient withdrawal order: taxable → tax-deferred → Roth.'</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">let curStage = 'student';</p>
+<p class="p2"><br></p>
+<p class="p1">function setStage(s, el) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>curStage = s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.stage-btn').forEach(b =&gt; b.classList.remove('sel'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('sel');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('stage-market-tip').innerHTML = STAGES[s] || STAGES.student;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function gotoSection(id, el) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.ntab').forEach(t =&gt; t.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('active');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CHART */</p>
+<p class="p1">new Chart(document.getElementById('macroChart'), {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>type:'bar',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>data:{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>labels:['S&amp;P 500','Energy (XLE)','NVDA','Bitcoin','Bonds (BND)','Gold'],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>datasets:[</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{label:'2024',data:[24,18,130,155,5,13],backgroundColor:'rgba(10,25,47,0.3)',borderRadius:4},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{label:'2025',data:[18,22,-15,48,3,25],backgroundColor:'rgba(197,160,89,0.6)',borderRadius:4},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{label:'2026 Outlook',data:[12,30,20,35,4,15],backgroundColor:'rgba(26,122,94,0.7)',borderRadius:4}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>]</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>options:{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>responsive:true,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>plugins:{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>legend:{display:true,labels:{color:'#4a5568',font:{size:10},boxWidth:12,boxHeight:12}},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>tooltip:{backgroundColor:'#0a192f',titleColor:'#c5a059',bodyColor:'#fff',cornerRadius:6,padding:8}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>scales:{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>x:{grid:{display:false},ticks:{color:'#4a5568',font:{size:10}}},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>y:{grid:{color:'rgba(10,25,47,0.05)'},ticks:{color:'#4a5568',font:{size:10},callback:v=&gt;v+'%'}}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">/* CHAT */</p>
+<p class="p1">const msgs = document.getElementById('chatMsgs');</p>
+<p class="p1">const inp = document.getElementById('chatIn');</p>
+<p class="p1">const btn = document.getElementById('sendBtn');</p>
+<p class="p2"><br></p>
+<p class="p1">function askCopilot(q) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('copilot').scrollIntoView({behavior:'smooth',block:'start'});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; { inp.value = q; sendMsg(); }, 400);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function addMsg(txt, role) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const d = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>d.className = 'msg ' + role;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (role === 'ai') d.innerHTML = '&lt;span class="ai-tag"&gt;Gordon AI · Co-Pilot&lt;/span&gt;' + txt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>else d.textContent = txt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>msgs.appendChild(d);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>msgs.scrollTop = msgs.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return d;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">async function sendMsg() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const q = inp.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!q || btn.disabled) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>inp.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>addMsg(q, 'user');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.textContent = '...';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const loader = addMsg('Thinking...', 'loading');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stageCtx = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>student:'The user is a student (age ~14-22), likely with no income or part-time income, focused on FAFSA, scholarships, first credit, and financial basics.',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>young:'The user is a young professional (age ~22-35), likely earning $30k-$80k, interested in 401k, Roth IRA, debt paydown, and first investments.',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>parent:'The user is a parent (age ~30-50), balancing family expenses, 529 college savings, life insurance needs, and wealth building.',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>preretiree:'The user is a pre-retiree (age ~50-65), focused on maximizing retirement savings, Social Security timing, and conservative allocation.',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>retiree:'The user is a retiree (age 65+), focused on withdrawal strategies, RMDs, estate planning, and legacy transfer.'</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}[curStage] || '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const systemPrompt = `You are Gordon AI, a conversational but smart financial co-pilot for the Gordon family financial literacy app. You help families and friends at every life stage — students, young professionals, parents, pre-retirees, and retirees.</p>
+<p class="p2"><br></p>
+<p class="p1">Current user context: ${stageCtx}</p>
+<p class="p2"><br></p>
+<p class="p1">Today's market context (April 2026): S&amp;P 500 ~5,241, Fed Rate 4.25% (held steady), CPI inflation 3.1%, Bitcoin ~$84,320, Gold ~$3,280 (near record highs), Oil (WTI) ~$78.40. Key geopolitical risks: US-China tariff escalation, Middle East tensions affecting oil supply chains, strong USD pressuring emerging markets.</p>
+<p class="p2"><br></p>
+<p class="p1">Tone: Be conversational but smart — like a knowledgeable friend who happens to be a financial expert. Give real, specific, actionable advice. Don't be overly formal. Use plain English. When relevant, reference current market conditions.</p>
+<p class="p2"><br></p>
+<p class="p1">Always end with this disclaimer: "⚠️ This is for entertainment and educational purposes only and is not to be distributed for compensation. Always consult with a licensed financial advisor, tax advisor, or Certified Financial Planner for decisions specific to your situation." Keep responses concise — 150-250 words max.`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const res = await fetch('https://api.anthropic.com/v1/messages', {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method:'POST',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>headers:{'Content-Type':'application/json'},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body:JSON.stringify({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>model:'claude-sonnet-4-20250514',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max_tokens:1000,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>system: systemPrompt,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>messages:[{role:'user',content:q}]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reply = data.content?.find(b =&gt; b.type === 'text')?.text || 'Sorry, I had trouble connecting. Please try again.';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>loader.remove();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>addMsg(reply, 'ai');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>loader.remove();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>addMsg('Connection issue — please try again in a moment.', 'ai');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.textContent = 'Ask →';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* QUIZ */</p>
+<p class="p1">const DNA = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{max:7,level:'Conservative',icon:'🛡️',bg:'#e8f4fd',advice:'Focus on bonds, money markets, and dividend ETFs. Protect what you have while growing steadily.',alloc:'70% Bonds/Cash · 25% Core ETFs · 5% Stocks',ins:'Priority: Term Life → Whole Life for estate planning.'},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{max:12,level:'Moderate',icon:'⚖️',bg:'#fff8e7',advice:'A balanced 60/40 portfolio suits you. Core ETFs like VOO and BND with modest growth positions.',alloc:'40% Bonds · 45% Core ETFs · 10% Stocks · 5% Crypto',ins:'Priority: Term Life now → IUL for tax-free retirement income later.'},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{max:15,level:'Aggressive',icon:'🚀',bg:'#e6f4ef',advice:'You can handle volatility. Lean into growth ETFs, sector plays, and a small crypto allocation (~5%).',alloc:'15% Bonds · 55% Core ETFs · 25% Stocks · 5% Crypto',ins:'Priority: Term Life for protection. Expand to IUL in 3–5 years.'}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">function calcQuiz() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const q1 = document.querySelector('input[name=q1]:checked');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const q2 = document.querySelector('input[name=q2]:checked');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const q3 = document.querySelector('input[name=q3]:checked');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const r = document.getElementById('qres');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!q1||!q2||!q3) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.style.display='block';r.style.background='#fdf0ef';r.style.border='1px solid #c0392b';r.style.color='#8b2020';r.style.borderRadius='8px';r.style.padding='14px';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.innerHTML='⚠️ Please answer all three questions.';return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const tot = +q1.value + +q2.value + +q3.value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const p = DNA.find(d =&gt; tot &lt;= d.max) || DNA[2];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>r.style.display='block';r.style.background=p.bg;r.style.border='1px solid rgba(10,25,47,.1)';r.style.color='#1a1a2e';r.style.borderRadius='10px';r.style.padding='20px';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>r.innerHTML=`&lt;div style="font-size:2rem;margin-bottom:6px;"&gt;${p.icon}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#0a192f;margin-bottom:8px;"&gt;${p.level} Investor&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p style="font-size:.88rem;color:#4a5568;margin-bottom:10px;"&gt;${p.advice}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="background:rgba(10,25,47,.06);border-radius:6px;padding:8px 14px;font-size:.8rem;color:#1a1a2e;margin-bottom:8px;"&gt;📊 ${p.alloc}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-size:.8rem;color:#4a5568;margin-bottom:14px;"&gt;🛡️ ${p.ins}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="askCopilot('I am a ${p.level.toLowerCase()} investor. Build me a detailed investment plan tailored to my profile and current market conditions.')" style="background:#0a192f;color:#c5a059;border:1px solid #c5a059;padding:9px 20px;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer;"&gt;Get My Full Plan from AI →&lt;/button&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* PLAN BUILDER */</p>
+<p class="p1">async function buildPlan() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const name = document.getElementById('pb-name').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const age = document.getElementById('pb-age').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const income = document.getElementById('pb-income').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const savings = document.getElementById('pb-savings').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const goal = document.getElementById('pb-goal').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stage = document.getElementById('pb-stage').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const r = document.getElementById('plan-result');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!name||!age||!income||!goal||!stage) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.innerHTML='&lt;div class="callout red"&gt;&lt;span class="ci"&gt;⚠️&lt;/span&gt;&lt;span&gt;Please fill in all fields to generate your plan.&lt;/span&gt;&lt;/div&gt;';return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>r.innerHTML='&lt;div class="callout blue"&gt;&lt;span class="ci"&gt;⏳&lt;/span&gt;&lt;span&gt;Building your personalized plan...&lt;/span&gt;&lt;/div&gt;';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const prompt = `Create a personalized financial plan for ${name}, age ${age}, life stage: ${stage}, annual income: ${income}, monthly savings available: ${savings || 'unknown'}, primary goal: ${goal}.</p>
+<p class="p2"><br></p>
+<p class="p1">Format it clearly with these sections:</p>
+<p class="p1">1. Your Financial Snapshot</p>
+<p class="p1">2. Top 3 Immediate Action Steps (numbered, specific)</p>
+<p class="p1">3. 12-Month Milestones</p>
+<p class="p1">4. Key Accounts to Open/Maximize</p>
+<p class="p1">5. Insurance Recommendation</p>
+<p class="p1">6. One Risk to Watch</p>
+<p class="p2"><br></p>
+<p class="p1">Keep it conversational, specific, and actionable. Reference current 2026 market conditions where relevant (S&amp;P ~5241, Fed rate 4.25%, inflation 3.1%, gold at record highs). End with this exact disclaimer: "⚠️ This plan is for entertainment and educational purposes only and is not to be distributed for compensation. Always consult a licensed financial advisor, tax advisor, or Certified Financial Planner before acting on any guidance."`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const res = await fetch('https://api.anthropic.com/v1/messages', {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method:'POST',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>headers:{'Content-Type':'application/json'},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const reply = data.content?.find(b =&gt; b.type==='text')?.text || 'Unable to generate plan. Please try again.';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.innerHTML=`&lt;div style="background:var(--cream);border:1px solid rgba(10,25,47,.1);border-radius:10px;padding:20px;font-size:.88rem;color:var(--textl);line-height:1.75;white-space:pre-wrap;"&gt;${reply}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>r.innerHTML='&lt;div class="callout red"&gt;&lt;span class="ci"&gt;⚠️&lt;/span&gt;&lt;span&gt;Connection error. Please try again.&lt;/span&gt;&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
